@@ -7,4 +7,14 @@
     android:orientation="vertical"
     tools:context="sg.edu.rp.c346.p05_ndpsongs.SecondActivity">
 
+    <Button
+        android:id="@+id/btn5Star"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
