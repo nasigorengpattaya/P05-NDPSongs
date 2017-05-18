@@ -19,7 +19,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -35,7 +35,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etSinger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,7 +51,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -67,6 +67,7 @@
         android:textSize="18sp" />
 
     <RadioGroup
+        android:id="@+id/rg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -116,18 +117,18 @@
         android:paddingTop="16dp">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnInsert"
             android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.10"
             android:text="Insert" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnshowList"
             android:layout_width="218dp"
             android:layout_height="wrap_content"
-            android:text="Show List"
-            android:layout_weight="0.14" />
+            android:layout_weight="0.14"
+            android:text="Show List" />
 
     </LinearLayout>
 
