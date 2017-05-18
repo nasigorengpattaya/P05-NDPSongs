@@ -34,7 +34,7 @@ public class songAdapter extends ArrayAdapter<Song> {
 
         TextView tvtitle = (TextView) rowView.findViewById(R.id.textViewTitle);
         TextView tvsinger = (TextView) rowView.findViewById(R.id.textViewSinger);
-        TextView tvyear = (TextView) rowView.findViewById(R.id.textViewYear;
+        TextView tvyear = (TextView) rowView.findViewById(R.id.textViewYear);
 
         ImageView iv1 = (ImageView) rowView.findViewById(R.id.imageView1);
         ImageView iv2 = (ImageView) rowView.findViewById(R.id.imageView2);
