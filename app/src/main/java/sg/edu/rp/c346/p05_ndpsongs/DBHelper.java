@@ -60,7 +60,7 @@ public class DBHelper extends SQLiteOpenHelper{
         return result;
     }
 
-    public ArrayList<Song> getAllNotes() {
+    public ArrayList<Song> getAllSongs() {
         ArrayList<Song> songs = new ArrayList<Song>();
 
         String selectQuery = "SELECT " + COLUMN_ID + ","
@@ -84,6 +84,8 @@ public class DBHelper extends SQLiteOpenHelper{
         db.close();
         return songs;
     }
+
+
 
 
 
