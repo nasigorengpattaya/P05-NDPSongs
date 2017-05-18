@@ -1,6 +1,7 @@
 package sg.edu.rp.c346.p05_ndpsongs;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class ThirdActivity extends AppCompatActivity {
     EditText etTitle,etSinger,etYear;
     RadioGroup rg;
     Song song;
+    private DBHelper dbhelper;
 
 
     @Override
@@ -28,11 +30,16 @@ public class ThirdActivity extends AppCompatActivity {
         etYear= (EditText)findViewById(R.id.etYear);
         rg =(RadioGroup)findViewById(R.id.rg);
         Intent i = getIntent();
-        song = (Song) i.getSerializableExtra("song");
-        etTitle.setText(song.getTitle());
-        etSinger.setText(song.getSinger());
-        etYear.setText(song.getYear());
-        rg.check(song.getStar());
+
+        DBHelper dbh = new DBHelper(ThirdActivity.this);
+        int id = i.getIntExtra("id", 0);
+        Cursor res = dbh.getSong(id);
+        res.moveToFirst();
+
+        etTitle.setText(res.getString(res.getColumnIndex("title")));
+        etSinger.setText(res.getString(res.getColumnIndex("singer")));
+        etYear.setText(res.getString(res.getColumnIndex("year")));
+        rg.check(id);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,6 +3,7 @@ package sg.edu.rp.c346.p05_ndpsongs;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,11 +31,19 @@ public class SecondActivity extends AppCompatActivity {
         al = new ArrayList<Song>();
 
         DBHelper dbh = new DBHelper(this);
+        ArrayList<String> data = dbh.getSongs();
+        dbh.close();
+
         ArrayList<Song>songs = dbh.getAllSongs();
+
         aa = new songAdapter(this, R.layout.row, songs);
         lv.setAdapter(aa);
 
+        for (int i=0; i<data.size(); i++) {
+            Log.d("Database content", i + ". " + songs.get(i));
+            aa = new songAdapter(SecondActivity.this,R.layout.row, al);
 
+        }
 
         btn5Star.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,12 +52,17 @@ public class SecondActivity extends AppCompatActivity {
                 al.clear();
                 al.addAll(dbh.get5StarSongs());
                 dbh.close();
-
-                for (int i = 0; i < al.size(); i++) {
-                    String tmp = al.get(i).toString();
-                }
-                lv.setAdapter();
+                lv.setAdapter(aa);
                 aa.notifyDataSetChanged();
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(SecondActivity.this, ThirdActivity.class);
+                i.putExtra("id", al.get(position+1));
+                startActivity(i);
             }
         });
 
