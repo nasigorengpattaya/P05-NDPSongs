@@ -29,15 +29,30 @@ public class ThirdActivity extends AppCompatActivity {
         rg =(RadioGroup)findViewById(R.id.rg);
         Intent i = getIntent();
         song = (Song) i.getSerializableExtra("song");
-        song.
-
+        etTitle.setText(song.getTitle());
+        etSinger.setText(song.getSinger());
+        etYear.setText(song.getYear());
+        rg.check(song.getStar());
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DBHelper dbh = new DBHelper(ThirdActivity.this);
-                song.(etContent.getText().toString());
-                dbh.updateNote(data);
+                song.setTitle(etTitle.getText().toString());
+                song.setSinger(etSinger.getText().toString());
+                song.setYear(etYear.getText().toString());
+                song.setStar(rg.getCheckedRadioButtonId());
+                dbh.updateSong(song);
+                dbh.close();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBHelper dbh = new DBHelper(ThirdActivity.this);
+              int id = song.getId();
+                dbh.deleteSong(id);
                 dbh.close();
             }
         });

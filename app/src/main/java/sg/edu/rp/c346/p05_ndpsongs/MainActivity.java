@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etTitle= (EditText)findViewById(R.id.editTextTitle);
-        etYear = (EditText)findViewById(R.id.editTextYear);
-        etSinger = (EditText)findViewById(R.id.editTextSinger);
+        etTitle= (EditText)findViewById(R.id.etTitle);
+        etYear = (EditText)findViewById(R.id.etYear);
+        etSinger = (EditText)findViewById(R.id.etSinger);
         rg = (RadioGroup)findViewById(R.id.rg);
-        btnInsert =(Button)findViewById(R.id.buttonInsert);
-        btnShowList =(Button)findViewById(R.id.buttonShow);
+        btnInsert =(Button)findViewById(R.id.btnInsert);
+        btnShowList =(Button)findViewById(R.id.btnshowList);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
