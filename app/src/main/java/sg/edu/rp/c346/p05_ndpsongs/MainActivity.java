@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etTitle= (EditText)findViewById(R.id.etTitle);
-        etYear = (EditText)findViewById(R.id.etYear);
-        etSinger = (EditText)findViewById(R.id.etSinger);
+        etTitle= (EditText)findViewById(R.id.editTextTitle);
+        etYear = (EditText)findViewById(R.id.editTextYear);
+        etSinger = (EditText)findViewById(R.id.editTextSinger);
         rg = (RadioGroup)findViewById(R.id.rg);
-        btnInsert =(Button)findViewById(R.id.btnInsert);
-        btnShowList =(Button)findViewById(R.id.btnshowList);
+        btnInsert =(Button)findViewById(R.id.buttonInsert);
+        btnShowList =(Button)findViewById(R.id.buttonShow);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,9 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
                 if (title.length() == 0 && year.length()== 0 && singer.length() == 0)return;
 
+                long row_affected = 0;
 
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long row_affected = dbh.insertSong(title,year,singer,star);
+                if (star == R.id.radioButton1) {
+                    row_affected = dbh.insertSong(title,year,singer,1);
+                } else if (star == R.id.radioButton2) {
+                    row_affected = dbh.insertSong(title,year,singer,2);
+                } else if (star == R.id.radioButton3) {
+                    row_affected = dbh.insertSong(title,year,singer,3);
+                } else if (star == R.id.radioButton4) {
+                    row_affected = dbh.insertSong(title,year,singer,4);
+                } else if (star == R.id.radioButton5) {
+                    row_affected = dbh.insertSong(title,year,singer,5);
+                }
                 dbh.close();
 
                 if (row_affected != -1){
@@ -57,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 
